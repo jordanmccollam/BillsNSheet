@@ -21,10 +21,11 @@ const Main = (props) => {
         <Col className="center-v justify-content-end">Welcome, User</Col>
       </Row>
       <Row className="mt-3">
-        <Col className="border border-success d-flex">
-          <div>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-          </div>
+        <Col xl={9} lg={8} md={7} xs={10}>
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        </Col>
+
+        <Col className="d-flex justify-content-center">
           <div className="calendar-icon">
             <img alt="calendar_icon" src={calendar_icon} className="calendar-icon-img" />
             <h2 className="calendar-icon-month">{moment().format("MMMM").toUpperCase()}</h2>

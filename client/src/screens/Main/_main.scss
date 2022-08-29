@@ -9,7 +9,7 @@
     }
 
     .calendar-icon {
-        width: 20%;
+        // width: 20%;
         position: relative;
 
         &-image {
@@ -30,6 +30,33 @@
             transform: translate(-50%, 0%);
             color: $bg;
             font-size: $text-05;
+        }
+
+        @media only screen and (max-width: $tablet) {
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: center;
+
+            .calendar-icon-img {
+                width: 50px !important;
+                height: 50px !important;
+            }
+
+            .calendar-icon-month {
+                font-size: $text-02;
+                top: 3em;
+                left: 50%;
+                transform: translate(-50%, 0%);
+            }
+
+            .calendar-icon-day {
+                font-size: $text-03;
+                color: $text-color;
+                top: 3em;
+                left: 50%;
+                transform: translate(-50%, 0%);
+            }
         }
     }
 }

@@ -1,0 +1,41 @@
+@import "variables";
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-v {
+  display: flex;
+  align-items: center;
+}
+
+.center-h {
+  display: flex;
+  justify-content: center;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+.w-100 {
+  width: 100vh;
+}
+
+.avoid-clicks {
+  pointer-events: none;
+}
+
+.font-primary {
+  font-family: $font-primary !important;
+}
+
+.font-secondary {
+  font-family: $font-secondary !important;
+}

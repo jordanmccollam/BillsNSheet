@@ -1,0 +1,13 @@
+@import "./sass/variables";
+@import "./sass/utils";
+@import "./sass/type";
+@import "./sass/ui";
+@import "./sass/anim";
+@import "~bootstrap/scss/bootstrap";
+
+.App {
+    background-color: $bg;
+    height: 100vh;
+}
+
+@import "./screens/Main/main.scss";

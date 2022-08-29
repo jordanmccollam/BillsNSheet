@@ -1,6 +1,11 @@
 # BillsNSheet
 A Budget Planner Application
 
-## Technologies Used
+## Technologies / Packages Used
 - React.js
 - Hygen.io
+- Bootstrap
+- React-Bootstrap
+- Prop-Types
+- Classnames
+- SASS

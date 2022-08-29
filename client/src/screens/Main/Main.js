@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import PropTypes from 'prop-types'
 import classnames from "classnames"
 import { Container, Row, Col } from 'react-bootstrap'
+import calendar_icon from './calendar_icon.png';
 
 import './_main.scss';
 
@@ -13,9 +14,24 @@ const Main = (props) => {
 	};
 
   return (
-    <div className={`${props.className} ${classnames(classes)}`}>
-      <h1 >Hello World</h1>
-    </div>
+    <Container className={`${props.className} ${classnames(classes)} my-3`}>
+      <Row className="title-bar">
+        <Col><h1 >Bills N' Sheet</h1></Col>
+        <Col className="center-v justify-content-end">Welcome, User</Col>
+      </Row>
+      <Row className="mt-3">
+        <Col className="border border-success d-flex">
+          <div>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+          </div>
+          <div className="calendar-icon">
+            <img alt="calendar_icon" src={calendar_icon} className="calendar-icon-img" />
+            <h2 className="calendar-icon-month">AUGUST</h2>
+            <div className="calendar-icon-day">29</div>
+          </div>
+        </Col>
+      </Row>
+    </Container>
   )
 }
 

@@ -9,7 +9,7 @@ import './App.scss';
 function App() {
   return (
     <div className="App">
-      <Container>
+      <Container fluid>
         <Row>
           <Col>
             <Screens.Main />

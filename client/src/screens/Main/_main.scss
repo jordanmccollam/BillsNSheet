@@ -1,5 +1,35 @@
 @import "../../sass/variables";
 
 .main {
+    .title-bar {
+        background-color: $dark-2;
+        border-radius: $border-radius;
+        padding-top: $space-01;
+        padding-bottom: $space-01;
+    }
 
+    .calendar-icon {
+        width: 20%;
+        position: relative;
+
+        &-image {
+            width: 100%;
+        }
+
+        &-month {
+            position: absolute;
+            top: 21%;
+            left: 50%;
+            transform: translate(-50%, 0%);
+        }
+
+        &-day {
+            position: absolute;
+            top: 35%;
+            left: 50%;
+            transform: translate(-50%, 0%);
+            color: $bg;
+            font-size: $text-05;
+        }
+    }
 }

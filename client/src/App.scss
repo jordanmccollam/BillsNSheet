@@ -1,13 +1,15 @@
+@import "~bootstrap/scss/bootstrap";
 @import "./sass/variables";
 @import "./sass/utils";
 @import "./sass/type";
-@import "./sass/ui";
 @import "./sass/anim";
-@import "~bootstrap/scss/bootstrap";
+@import "./sass/ui";
 
 .App {
     background-color: $bg;
     height: 100vh;
+    overflow: auto;
 }
 
+@import "./components/Card/card.scss";
 @import "./screens/Main/main.scss";

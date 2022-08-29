@@ -4,6 +4,7 @@ import classnames from "classnames"
 import { Container, Row, Col } from 'react-bootstrap'
 import calendar_icon from './calendar_icon.png';
 import moment from 'moment';
+import * as Comp from '../../components'
 
 import './_main.scss';
 
@@ -16,20 +17,43 @@ const Main = (props) => {
 
   return (
     <Container className={`${props.className} ${classnames(classes)} my-3`}>
-      <Row className="title-bar">
-        <Col><h1 >Bills N' Sheet</h1></Col>
-        <Col className="center-v justify-content-end">Welcome, User</Col>
-      </Row>
+      <Comp.Card>
+        <Row>
+          <Col><h1 >Bills N' Sheet</h1></Col>
+          <Col className="center-v justify-content-end">Welcome, User</Col>
+        </Row>
+      </Comp.Card>
+      
       <Row className="mt-2">
         <Col xl={9} lg={8} md={7} xs={10} className="mt-3">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+          <Comp.Card className="text-center">
+            Table of bills will go here
+          </Comp.Card>
         </Col>
 
         <Col className="d-flex justify-content-center">
-          <div className="calendar-icon">
-            <img alt="calendar_icon" src={calendar_icon} className="calendar-icon-img" />
-            <h2 className="calendar-icon-month">{moment().format("MMMM").toUpperCase()}</h2>
-            <div className="calendar-icon-day">{moment().format("D")}</div>
+          <div>
+            <div className="calendar-icon">
+              <img alt="calendar_icon" src={calendar_icon} className="calendar-icon-img" />
+              <h2 className="calendar-icon-month">{moment().format("MMMM").toUpperCase()}</h2>
+              <div className="calendar-icon-day">{moment().format("D")}</div>
+            </div>
+
+            <div>
+              <Comp.Card className="mt-3 text-center">
+                <h6>TOTAL INCOME:</h6>
+                <h1>+ {1900}</h1>
+              </Comp.Card>
+
+              <Comp.Card className="mt-3 text-center">
+                <h6>TOTAL BILLS:</h6>
+                <h1>- {600}</h1>
+              </Comp.Card>
+              <Comp.Card className="mt-3 text-center py-1">
+                <h6 className="mt-1">$$$ Left Over</h6>
+                <h3>{600}</h3>
+              </Comp.Card>
+            </div>
           </div>
         </Col>
       </Row>

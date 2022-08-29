@@ -1,13 +1,6 @@
 @import "../../sass/variables";
 
 .main {
-    .title-bar {
-        background-color: $dark-2;
-        border-radius: $border-radius;
-        padding-top: $space-01;
-        padding-bottom: $space-01;
-    }
-
     .calendar-icon {
         // width: 20%;
         position: relative;
@@ -58,5 +51,12 @@
                 transform: translate(-50%, 0%);
             }
         }
+    }
+
+    .main-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 }

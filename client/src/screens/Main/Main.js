@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import classnames from "classnames"
 import { Container, Row, Col } from 'react-bootstrap'
 import calendar_icon from './calendar_icon.png';
+import moment from 'moment';
 
 import './_main.scss';
 
@@ -26,8 +27,8 @@ const Main = (props) => {
           </div>
           <div className="calendar-icon">
             <img alt="calendar_icon" src={calendar_icon} className="calendar-icon-img" />
-            <h2 className="calendar-icon-month">AUGUST</h2>
-            <div className="calendar-icon-day">29</div>
+            <h2 className="calendar-icon-month">{moment().format("MMMM").toUpperCase()}</h2>
+            <div className="calendar-icon-day">{moment().format("D")}</div>
           </div>
         </Col>
       </Row>

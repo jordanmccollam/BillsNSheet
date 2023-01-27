@@ -41,17 +41,17 @@ const Main = (props) => {
 
             <div>
               <Comp.Card className="mt-3 text-center">
-                <h6>TOTAL INCOME:</h6>
-                <h1>+ {1900}</h1>
+                <h6 >TOTAL INCOME:</h6>
+                <h1 className="text-success">+ {1900}</h1>
               </Comp.Card>
 
               <Comp.Card className="mt-3 text-center">
                 <h6>TOTAL BILLS:</h6>
-                <h1>- {600}</h1>
+                <h1 className="text-danger">- {600}</h1>
               </Comp.Card>
               <Comp.Card className="mt-3 text-center py-1">
-                <h6 className="mt-1">$$$ Left Over</h6>
-                <h3>{600}</h3>
+                <h6 className="mt-1">Left Over:</h6>
+                <h1>${600}</h1>
               </Comp.Card>
             </div>
           </div>

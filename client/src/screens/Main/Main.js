@@ -27,7 +27,8 @@ const Main = (props) => {
       <Row className="mt-2">
         <Col xl={9} lg={8} md={7} xs={10} className="mt-3">
           <Comp.Card className="text-center">
-            Table of bills will go here
+            {/* Table of bills will go here */}
+            <Comp.Table />
           </Comp.Card>
         </Col>
 

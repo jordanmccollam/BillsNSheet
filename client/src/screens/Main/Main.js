@@ -39,7 +39,7 @@ const Main = (props) => {
 
   return (
     <Container className={`${props.className} ${classnames(classes)} my-3`}>
-      <Comp.Card>
+      <Comp.Card className="px-4">
         <Row>
           <Col><h1 >Bills N' Sheet</h1></Col>
           <Col className="center-v justify-content-end">Welcome, User</Col>

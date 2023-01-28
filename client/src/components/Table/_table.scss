@@ -1,5 +1,32 @@
 @import "../../sass/variables";
 
 .table {
+    background-color: $dark-2;
+    border-radius: $border-radius;
 
+    &-row {
+        border-radius: $border-radius;
+
+        &:hover {
+            background-color: $dark-1;
+            transition: $transition;
+            cursor: pointer;
+        }
+    }
+    
+    &-row,
+    &-header {
+        padding: $space-01 0;
+    }
+
+    &-header {
+        border-bottom: 1px solid $dark-1;
+        border-radius: 0;
+        &:hover {
+            pointer-events: none;
+        }
+    }
+    &-header-text {
+        color: $dark-1;
+    }
 }

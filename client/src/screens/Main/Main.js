@@ -15,6 +15,28 @@ const Main = (props) => {
 		[`main`]: true
 	};
 
+  const tableTestData = {
+    data: [
+      {
+        _id: Math.floor(Math.random * 9999),
+        description: "Rent",
+        amount: 400,
+        date: "05"
+      },
+      {
+        _id: Math.floor(Math.random * 9999),
+        description: "Phone",
+        amount: 30,
+        date: "08"
+      },
+    ],
+    columns: [
+      {label: "Description", property: "description"},
+      {label: "Amount", property: "amount", size: 2},
+      {label: "Date", property: "date", size: 2}
+    ]
+  }
+
   return (
     <Container className={`${props.className} ${classnames(classes)} my-3`}>
       <Comp.Card>
@@ -28,7 +50,7 @@ const Main = (props) => {
         <Col xl={9} lg={8} md={7} xs={10} className="mt-3">
           <Comp.Card className="text-center">
             {/* Table of bills will go here */}
-            <Comp.Table />
+            <Comp.Table data={tableTestData.data} columns={tableTestData.columns} />
           </Comp.Card>
         </Col>
 

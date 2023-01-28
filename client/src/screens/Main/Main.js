@@ -10,34 +10,63 @@ import './_main.scss';
 
 const logger = "Main:: ";
 
+const testData = [
+  {
+    _id: 1,
+    description: "Rent",
+    amount: 400,
+    date: "05"
+  },
+  {
+    _id: 2,
+    description: "Phone",
+    amount: 30,
+    date: "28"
+  },
+  {
+    _id: 3,
+    description: "Internet",
+    amount: 30,
+    date: "28"
+  },
+]
+
 const Main = (props) => {
   let classes = {
 		[`main`]: true
 	};
   const [income, setIncome] = useState(1900)
-  const [totalBills, setTotalBills] = useState(600)
+  const [totalBills, setTotalBills] = useState(0)
+  const [tableData, setTableData] = useState(testData)
+  const [currentAmount, setCurrentAmount] = useState(0)
 
-  const tableTestData = {
-    data: [
-      {
-        _id: 1,
-        description: "Rent",
-        amount: 400,
-        date: "05"
-      },
-      {
-        _id: 2,
-        description: "Phone",
-        amount: 30,
-        date: "08"
-      },
-    ],
-    columns: [
-      {label: "Description", property: "description"},
-      {label: "Amount", property: "amount", size: 2},
-      {label: "Date", property: "date", size: 2}
-    ]
+  useEffect(() => {
+    calculateTotalBills()
+    calculateCurrentAmount()
+  }, [tableData])
+
+  const calculateTotalBills = () => {
+    var _totalBills = 0
+    tableData.forEach(item => {
+      _totalBills += item.amount;
+    });
+    setTotalBills(_totalBills)
   }
+
+  const calculateCurrentAmount = () => {
+    var billsBeforeToday = tableData.filter(t => parseInt(t.date) < parseInt(moment().format("D")));
+    var _currentAmount = income;
+    billsBeforeToday.forEach(item => {
+      _currentAmount -= item.amount;
+    });
+    setCurrentAmount(_currentAmount)
+  }
+
+  const tableColumns = [
+    {label: "Description", property: "description"},
+    {label: "Amount", property: "amount", size: 2},
+    {label: "Date", property: "date", size: 2}
+  ]
 
   return (
     <Container className={`${props.className} ${classnames(classes)} my-3`}>
@@ -52,7 +81,7 @@ const Main = (props) => {
         <Col xl={9} lg={8} md={7} xs={10} className="mt-3">
           <Comp.Card className="text-center">
             {/* Table of bills will go here */}
-            <Comp.Table data={tableTestData.data} columns={tableTestData.columns} />
+            <Comp.Table data={tableData} columns={tableColumns} />
           </Comp.Card>
         </Col>
 
@@ -89,7 +118,7 @@ const Main = (props) => {
               <Comp.Card className="mt-3 text-center">
                 <div>
                   <h6 className="mt-1">Currently:</h6>
-                  <h3>${999}</h3>
+                  <h3>${currentAmount}</h3>
                 </div>
               </Comp.Card>
             </div>

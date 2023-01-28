@@ -13,7 +13,7 @@ export const WithData = {
     args: {
         data: [
             {
-                _id: Math.floor(Math.random * 9999),
+                _id: 1,
                 description: "Rent",
                 amount: 400,
                 date: "05"

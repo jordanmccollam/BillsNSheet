@@ -18,13 +18,13 @@ const Main = (props) => {
   const tableTestData = {
     data: [
       {
-        _id: Math.floor(Math.random * 9999),
+        _id: 1,
         description: "Rent",
         amount: 400,
         date: "05"
       },
       {
-        _id: Math.floor(Math.random * 9999),
+        _id: 2,
         description: "Phone",
         amount: 30,
         date: "08"
@@ -64,17 +64,23 @@ const Main = (props) => {
 
             <div>
               <Comp.Card className="mt-3 text-center">
-                <h6 >TOTAL INCOME:</h6>
-                <h1 className="text-success">+ {1900}</h1>
+                <div>
+                  <h6 >TOTAL INCOME:</h6>
+                  <h1 className="text-success">+ {1900}</h1>
+                </div>
               </Comp.Card>
 
               <Comp.Card className="mt-3 text-center">
-                <h6>TOTAL BILLS:</h6>
-                <h1 className="text-danger">- {600}</h1>
+                <div>
+                  <h6>TOTAL BILLS:</h6>
+                  <h1 className="text-danger">- {600}</h1>
+                </div>
               </Comp.Card>
               <Comp.Card className="mt-3 text-center py-1">
-                <h6 className="mt-1">Left Over:</h6>
-                <h1>${600}</h1>
+                <div>
+                  <h6 className="mt-1">Left Over:</h6>
+                  <h1>${600}</h1>
+                </div>
               </Comp.Card>
             </div>
           </div>

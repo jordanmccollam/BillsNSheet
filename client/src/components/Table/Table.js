@@ -57,7 +57,7 @@ const Table = ({ className, rowKey }) => {
         </Row>
       )) : (
         <Row>
-          <Col className="pt-3">No data yet</Col>
+          <Col className="pt-3 text-center">No data yet</Col>
         </Row>
       )}
     </Container>

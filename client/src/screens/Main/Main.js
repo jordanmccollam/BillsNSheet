@@ -14,6 +14,8 @@ const Main = (props) => {
   let classes = {
 		[`main`]: true
 	};
+  const [income, setIncome] = useState(1900)
+  const [totalBills, setTotalBills] = useState(600)
 
   const tableTestData = {
     data: [
@@ -66,20 +68,28 @@ const Main = (props) => {
               <Comp.Card className="mt-3 text-center">
                 <div>
                   <h6 >TOTAL INCOME:</h6>
-                  <h1 className="text-success">+ {1900}</h1>
+                  <h1 className="text-success">+ {income}</h1>
                 </div>
               </Comp.Card>
 
               <Comp.Card className="mt-3 text-center">
                 <div>
                   <h6>TOTAL BILLS:</h6>
-                  <h1 className="text-danger">- {600}</h1>
+                  <h1 className="text-danger">- {totalBills}</h1>
                 </div>
               </Comp.Card>
-              <Comp.Card className="mt-3 text-center py-1">
+
+              <Comp.Card className="mt-3 text-center">
                 <div>
                   <h6 className="mt-1">Left Over:</h6>
-                  <h1>${600}</h1>
+                  <h1>${income - totalBills}</h1>
+                </div>
+              </Comp.Card>
+
+              <Comp.Card className="mt-3 text-center">
+                <div>
+                  <h6 className="mt-1">Currently:</h6>
+                  <h3>${999}</h3>
                 </div>
               </Comp.Card>
             </div>

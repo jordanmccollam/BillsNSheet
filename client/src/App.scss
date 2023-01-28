@@ -9,6 +9,10 @@
     background-color: $bg;
     height: 100vh;
     overflow: auto;
+
+    h6 {
+        color: $dark-1
+    }
 }
 
 @import "./components/Card/card.scss";

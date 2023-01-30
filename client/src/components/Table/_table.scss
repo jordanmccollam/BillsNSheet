@@ -6,10 +6,10 @@
 
     &-row {
         border-radius: $border-radius;
+        transition: $transition;
 
         &:hover {
             background-color: $dark-1;
-            transition: $transition;
             cursor: pointer;
         }
     }
@@ -28,5 +28,23 @@
     }
     &-header-text {
         color: $dark-1;
+    }
+    
+    &-menu {
+        background-color: darken($dark-2, 10%);
+        border-top-left-radius: $border-radius;
+        border-top-right-radius: $border-radius;
+        padding-top: $space-01;
+    }
+
+    &-name {
+        color: $dark-1;
+    }
+
+    &-content {
+        // padding-top: $space-00;
+        padding-bottom: $space-02;
+        padding-left: $space-02;
+        padding-right: $space-02;
     }
 }

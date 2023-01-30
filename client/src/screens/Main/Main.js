@@ -79,10 +79,10 @@ const Main = (props) => {
       
       <Row className="mt-2">
         <Col xl={9} lg={8} md={7} xs={10} className="mt-3">
-          <Comp.Card className="text-center">
+          {/* <Comp.Card className="text-center"> */}
             {/* Table of bills will go here */}
-            <Comp.Table data={tableData} columns={tableColumns} />
-          </Comp.Card>
+            <Comp.Table data={tableData} columns={tableColumns} name="Bills" />
+          {/* </Comp.Card> */}
         </Col>
 
         <Col className="d-flex justify-content-center">

@@ -8,4 +8,17 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  backgrounds: {
+    default: 'billsNSheet',
+    values: [
+      {
+        name: 'billsNSheet',
+        value: '#202331',
+      },
+      {
+        name: 'alt',
+        value: '#efefef',
+      },
+    ],
+  },
 }

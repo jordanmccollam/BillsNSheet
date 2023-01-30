@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/jordanmccollam/BillsNSheet/issues"
   },
-  "homepage": "https://github.com/jordanmccollam/BillsNSheet#readme"
+  "homepage": "https://github.com/jordanmccollam/BillsNSheet#readme",
+  "devDependencies": {
+    "hygen": "^6.2.11"
+  }
 }

@@ -1,0 +1,25 @@
+@import "../../sass/variables";
+
+.button {
+    background-color: $dark-2 !important;
+    color: $dark-1 !important;
+    border: none;
+    border-radius: $border-radius;
+    outline: none;
+    transition: $transition;
+    min-width: 6em;
+    padding-top: .1em;
+    padding-bottom: .1em;
+
+    &:hover,
+    &:focus {
+        box-shadow: 0 0.5em 0.5em -0.4em $shadow-color;
+        transform: translateY(-0.25em);   
+    }
+
+    // If using icons
+    svg,
+    path {
+        color: $dark-1 !important;
+    }
+}

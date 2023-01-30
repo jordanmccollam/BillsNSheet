@@ -5,6 +5,7 @@ import { Container, Row, Col } from 'react-bootstrap'
 import calendar_icon from './calendar_icon.png';
 import moment from 'moment';
 import * as Comp from '../../components'
+import { BsPlus } from "react-icons/bs";
 
 import './_main.scss';
 
@@ -39,6 +40,9 @@ const Main = (props) => {
   const [totalBills, setTotalBills] = useState(0)
   const [tableData, setTableData] = useState(testData)
   const [currentAmount, setCurrentAmount] = useState(0)
+  const [newBill, setNewBill] = useState({
+    showPopup: false
+  })
 
   useEffect(() => {
     calculateTotalBills()
@@ -68,6 +72,18 @@ const Main = (props) => {
     {label: "Date", property: "date", size: 2}
   ]
 
+  const toggleNewBillPopup = () => {
+    setNewBill(prevBill => ({...prevBill, show: !prevBill.show}))
+  }
+
+  const tableMenuActions = [
+    {
+      label: "ADD A BILL",
+      icon: <BsPlus />,
+      func: toggleNewBillPopup,
+    }
+  ]
+
   return (
     <Container className={`${props.className} ${classnames(classes)} my-3`}>
       <Comp.Card className="px-4">
@@ -79,10 +95,8 @@ const Main = (props) => {
       
       <Row className="mt-2">
         <Col xl={9} lg={8} md={7} xs={10} className="mt-3">
-          {/* <Comp.Card className="text-center"> */}
-            {/* Table of bills will go here */}
-            <Comp.Table data={tableData} columns={tableColumns} name="Bills" />
-          {/* </Comp.Card> */}
+          {/* Table of bills will go here */}
+          <Comp.Table data={tableData} columns={tableColumns} name="Bills" menuActions={tableMenuActions} />
         </Col>
 
         <Col className="d-flex justify-content-center">
@@ -110,14 +124,14 @@ const Main = (props) => {
 
               <Comp.Card className="mt-3 text-center">
                 <div>
-                  <h6 className="mt-1">Left Over:</h6>
+                  <h6 className="mt-1">LEFT OVER:</h6>
                   <h1>${income - totalBills}</h1>
                 </div>
               </Comp.Card>
 
               <Comp.Card className="mt-3 text-center">
                 <div>
-                  <h6 className="mt-1">Currently:</h6>
+                  <h6 className="mt-1">CURRENTLY:</h6>
                   <h3>${currentAmount}</h3>
                 </div>
               </Comp.Card>
@@ -125,6 +139,8 @@ const Main = (props) => {
           </div>
         </Col>
       </Row>
+
+      <Comp.Popup show={newBill.show} toggle={toggleNewBillPopup} />
     </Container>
   )
 }

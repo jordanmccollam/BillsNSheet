@@ -9,7 +9,7 @@ import './_table.scss';
 
 const logger = "Table:: ";
 
-const Table = ({ className, rowKey, data, columns, name }) => {
+const Table = ({ className, rowKey, data, columns, name, menuActions }) => {
   let classes = {
 		[`table`]: true
 	};
@@ -18,12 +18,14 @@ const Table = ({ className, rowKey, data, columns, name }) => {
     <Container fluid className={`${className} ${classnames(classes)}`}>
       {/* Utility */}
       <Row className="table-menu">
-        <Col className="d-flex align-items-center table-name">
+        <Col className="d-flex align-items-center">
           <h5>{name}</h5>
         </Col>
-        <Col className="text-end">
-          <Button >Add Bill <BsPlus /></Button>
-        </Col>
+        {menuActions.map((action, actionIndex) => (
+          <Col key={`table-menu-action-${actionIndex}`} className="text-end">
+            <Button onClick={action.func} ><div>{action.label} {action.icon && action.icon}</div></Button>
+          </Col>
+        ))}
       </Row>
 
       <div className="table-content">
@@ -72,7 +74,8 @@ Table.propTypes = {
   rowKey: PropTypes.string,
   data: PropTypes.array,
   columns: PropTypes.array,
-  name: PropTypes.string
+  name: PropTypes.string,
+  menuActions: PropTypes.array
 }
 
 Table.defaultProps = {
@@ -80,7 +83,14 @@ Table.defaultProps = {
   rowKey: "_id",
   data: [],
   columns: [{label: "Label here", property: "", size: ""}],
-  name: "Table"
+  name: "Table",
+  menuActions: [
+    {
+      label: "Add",
+      icon: <BsPlus />,
+      func: () => console.log("Add to table")
+    }
+  ]
 }
 
 export default Table;

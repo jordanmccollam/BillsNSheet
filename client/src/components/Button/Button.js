@@ -13,7 +13,7 @@ const Button = (props) => {
 	};
 
   return (
-    <button className={`${props.className} ${classnames(classes)}`}>
+    <button className={`${props.className} ${classnames(classes)}`} onClick={props.onClick}>
     
       {props.children}
     </button>
@@ -25,12 +25,14 @@ Button.propTypes = {
     PropTypes.string,
     PropTypes.element
   ]),
-  className: PropTypes.string
+  className: PropTypes.string,
+  onClick: PropTypes.func
 }
 
 Button.defaultProps = {
   className: "",
-  children: "Button"
+  children: "Button",
+  onClick: () => console.log("on click!")
 }
 
 export default Button;

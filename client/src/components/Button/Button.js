@@ -9,7 +9,8 @@ const logger = "Button:: ";
 
 const Button = (props) => {
   let classes = {
-		[`button`]: true
+		[`button`]: true,
+    [`button-alt`]: props.alt
 	};
 
   return (
@@ -26,13 +27,15 @@ Button.propTypes = {
     PropTypes.element
   ]),
   className: PropTypes.string,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
+  alt: PropTypes.bool
 }
 
 Button.defaultProps = {
   className: "",
   children: "Button",
-  onClick: () => console.log("on click!")
+  onClick: () => console.log("on click!"),
+  alt: false
 }
 
 export default Button;

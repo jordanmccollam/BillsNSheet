@@ -1,12 +1,25 @@
 @import "variables";
 
-// .card {
-//     background-color: $dark-2;
-//     border-radius: $border-radius;
-//     padding-top: $space-01;
-//     padding-bottom: $space-01;
-//     padding-left: 0;
-//     padding-right: 0;
-//     margin-left: 0;
-//     margin-right: 0;
-// }
+// FORM OVERRIDES
+.form-control,
+.form-control:focus {
+    background-color: darken($dark-2, 10%);
+    border: none;
+    outline: none;
+    color: #efefef;
+}
+.form-control:focus {
+    outline: 3px solid $dark-1;
+    box-shadow: none;
+}
+.form-control::placeholder {
+    color: $dark-2 !important;
+    opacity: 1;
+}
+.form-control:-ms-input-placeholder {
+    color: $dark-2 !important;
+}
+.form-control::-moz-placeholder {
+    color: $dark-2 !important;
+}
+

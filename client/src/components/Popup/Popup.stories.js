@@ -11,6 +11,6 @@ const Template = (args) => < Popup {...args} />;
 
 export const Default = {
     args: {
-
+      show: true
     }
 }

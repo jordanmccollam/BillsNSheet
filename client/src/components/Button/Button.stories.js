@@ -14,3 +14,9 @@ export const Default = {
 
     }
 }
+
+export const Alt = {
+    args: {
+      alt: true
+    }
+}

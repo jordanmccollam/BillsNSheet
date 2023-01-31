@@ -6,3 +6,16 @@
   line-height: normal;
   font-size: $text-01;
 }
+
+.text-muted,
+.form-label {
+  color: $dark-1 !important;
+}
+
+.text-error {
+  color: $danger;
+  svg,
+  path {
+    color: $danger;
+  }
+}

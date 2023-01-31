@@ -1,5 +1,17 @@
 @import "../../sass/variables";
 
 .popup {
+    // BOOTSTRAP OVERRIDES
+    .modal-content {
+        background-color: $dark-2;
+    }
 
+    .modal-title {
+        color: $dark-1;
+    }
+
+    .modal-header,
+    .modal-footer {
+        border-color: $dark-1;
+    }
 }

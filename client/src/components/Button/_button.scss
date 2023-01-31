@@ -20,4 +20,14 @@
     path {
         color: $dark-1 !important;
     }
+
+    &-alt {
+        background-color: $dark-1 !important;
+        color: #efefef !important;
+        // If using icons
+        svg,
+        path {
+            color: #efefef !important;
+        }
+    }
 }

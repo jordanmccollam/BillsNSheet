@@ -194,27 +194,29 @@ const Main = (props) => {
           func: addNewBill
         }} 
       >
-        {newBill.error && (<div className="mb-3 text-error"><BiError /> {newBill.error}</div>)}
+        <div>
+          {newBill.error && (<div className="mb-3 text-error"><BiError /> {newBill.error}</div>)}
 
-        <Form>
-          <Form.Group className="mb-3">
-            <Form.Label>Description</Form.Label>
-            <Form.Control type="text" placeholder={`Ex: "Rent"`} value={newBill.description} name="description" onChange={onChangeNewBill} />
-          </Form.Group>
-          <div className="d-flex justify-content-between mb-2">
-            <Form.Group>
-              <Form.Label>Amount</Form.Label>
-              <Form.Control type="number" placeholder={`Ex: "1200"`} value={newBill.amount} name="amount" onChange={onChangeNewBill} />
+          <Form>
+            <Form.Group className="mb-3">
+              <Form.Label>Description</Form.Label>
+              <Form.Control type="text" placeholder={`Ex: "Rent"`} value={newBill.description} name="description" onChange={onChangeNewBill} />
             </Form.Group>
-            <Form.Group>
-              <Form.Label>Date</Form.Label>
-              <Form.Control type="number" placeholder={`Ex: "01"`} value={newBill.date} name="date" onChange={onChangeNewBill} />
-              <Form.Text className="text-muted">
-                (We only need the day of the month)
-              </Form.Text>
-            </Form.Group>
-          </div>
-        </Form>
+            <div className="d-flex justify-content-between mb-2">
+              <Form.Group>
+                <Form.Label>Amount</Form.Label>
+                <Form.Control type="number" placeholder={`Ex: "1200"`} value={newBill.amount} name="amount" onChange={onChangeNewBill} />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Date</Form.Label>
+                <Form.Control type="number" placeholder={`Ex: "01"`} value={newBill.date} name="date" onChange={onChangeNewBill} />
+                <Form.Text className="text-muted">
+                  (We only need the day of the month)
+                </Form.Text>
+              </Form.Group>
+            </div>
+          </Form>
+        </div>
       </Comp.Popup>
     </Container>
   )

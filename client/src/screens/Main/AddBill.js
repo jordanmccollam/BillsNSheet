@@ -1,11 +1,7 @@
-import React, { useState, useEffect, forwardRef, useRef, useImperativeHandle } from "react";
-import PropTypes from 'prop-types'
-import classnames from "classnames"
-import { Container, Row, Col, Form } from 'react-bootstrap'
-import calendar_icon from './calendar_icon.png';
+import React, { useState, useEffect, forwardRef, useImperativeHandle } from "react";
+import { Form } from 'react-bootstrap'
 import moment from 'moment';
 import * as Comp from '../../components'
-import { BsPlus } from "react-icons/bs";
 import { BiError } from "react-icons/bi";
 
 const defaultNewBill = {

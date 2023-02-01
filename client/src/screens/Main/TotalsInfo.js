@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Col } from 'react-bootstrap'
+import { Col, Form } from 'react-bootstrap'
 import calendar_icon from './calendar_icon.png';
 import moment from 'moment';
 import { Card } from '../../components'
@@ -31,6 +31,22 @@ const TotalsInfoSection = ({ bills }) => {
       setCurrentAmount(_currentAmount)
     }
 
+    const onChangeIncome = (e) => {
+        setIncome(e.target.value)
+    }
+
+    const saveIncome = () => {
+        // Save income to db / user profile here
+        console.log("Save income")
+    }
+
+    const detectEnterKey = (e) => {
+        if (e.key === "enter" || e.keyCode === 13) {
+            // ENTER KEY PRESSED
+            e.target.blur()
+        }
+    }
+
     return (
         <Col className="d-flex justify-content-center">
           <div>
@@ -42,30 +58,39 @@ const TotalsInfoSection = ({ bills }) => {
 
             <div>
               <Card className="mt-3 text-center">
+                <div>
+                    <h6 >TOTAL INCOME:</h6>
+                    <div className="d-flex justify-content-center income-container">
+                        <Form.Control 
+                            type="text" 
+                            value={income} 
+                            onChange={onChangeIncome} 
+                            className="income-input" 
+                            onBlur={saveIncome} 
+                            onKeyDown={detectEnterKey}
+                        />
+                    </div>
+                </div>
+              </Card>
+
+              <Card className="mt-3 text-center">
                   <div>
-                  <h6 >TOTAL INCOME:</h6>
-                  <h1 className="text-success">+ {income}</h1>
+                    <h6>TOTAL BILLS:</h6>
+                    <h1 className="total-bills-text">- {totalBills}</h1>
                   </div>
               </Card>
 
               <Card className="mt-3 text-center">
                   <div>
-                  <h6>TOTAL BILLS:</h6>
-                  <h1 className="text-danger">- {totalBills}</h1>
+                    <h6 className="mt-1">LEFT OVER:</h6>
+                    <h1>${income - totalBills}</h1>
                   </div>
               </Card>
 
               <Card className="mt-3 text-center">
                   <div>
-                  <h6 className="mt-1">LEFT OVER:</h6>
-                  <h1>${income - totalBills}</h1>
-                  </div>
-              </Card>
-
-              <Card className="mt-3 text-center">
-                  <div>
-                  <h6 className="mt-1">CURRENTLY:</h6>
-                  <h3>${currentAmount}</h3>
+                    <h6 className="mt-1">CURRENTLY:</h6>
+                    <h3>${currentAmount}</h3>
                   </div>
               </Card>
             </div>

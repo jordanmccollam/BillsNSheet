@@ -79,8 +79,8 @@ const AddBillSection = forwardRef(({ setBills }, ref) => {
 
             <Form>
                 <Form.Group className="mb-3">
-                <Form.Label>Description</Form.Label>
-                <Form.Control type="text" placeholder={`Ex: "Rent"`} value={newBill.description} name="description" onChange={onChangeNewBill} />
+                  <Form.Label>Description</Form.Label>
+                  <Form.Control type="text" placeholder={`Ex: "Rent"`} value={newBill.description} name="description" onChange={onChangeNewBill} />
                 </Form.Group>
                 <div className="d-flex justify-content-between mb-2">
                 <Form.Group>

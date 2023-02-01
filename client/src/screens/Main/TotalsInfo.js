@@ -26,7 +26,7 @@ const TotalsInfoSection = ({ bills }) => {
     }
   
     const calculateCurrentAmount = () => {
-      var billsBeforeToday = bills.filter(t => parseInt(t.date) < parseInt(moment('6/1/2023', 'D/M/YYYY').format("D")));
+      var billsBeforeToday = bills.filter(t => parseInt(t.date) < parseInt(moment().format("D")));
       var _currentAmount = income;
       billsBeforeToday.forEach(item => {
         _currentAmount -= parseFloat(item.amount);

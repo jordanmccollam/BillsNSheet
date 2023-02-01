@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cd client && npm start",
     "install": "cd client && npm i",
-    "storybook": "cd client && npm run storybook"
+    "storybook": "cd client && npm run storybook",
+    "build": "cd client && npm run build"
   },
   "repository": {
     "type": "git",

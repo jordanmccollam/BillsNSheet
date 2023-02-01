@@ -21,7 +21,7 @@ const AddBillSection = forwardRef(({ setBills }, ref) => {
     })
 
     const toggleNewBillPopup = () => {
-        setNewBill(prevBill => ({...defaultNewBill, show: !prevBill.show}))
+        setNewBill(prevBill => ({...defaultNewBill, showPopup: !prevBill.showPopup}))
     }
 
     const onChangeNewBill = (e) => {
@@ -66,7 +66,7 @@ const AddBillSection = forwardRef(({ setBills }, ref) => {
 
     return (
         <Comp.Popup 
-            show={newBill.show} 
+            show={newBill.showPopup} 
             toggle={toggleNewBillPopup} 
             title="Add a bill" 
             action={{

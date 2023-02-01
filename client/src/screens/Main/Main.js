@@ -6,7 +6,9 @@ import { Card, Table } from '../../components'
 import { BsPlus } from "react-icons/bs";
 import AddBillSection from './AddBill';
 import TotalsInfoSection from "./TotalsInfo";
+import EditBillSection from "./EditBill";
 import { MdDelete } from 'react-icons/md';
+import { AiFillEdit } from 'react-icons/ai'
 
 import './_main.scss';
 
@@ -42,6 +44,7 @@ const defaultNewBill = {
 
 const Main = (props) => {
   const addRef = useRef()
+  const editRef = useRef()
 
   let classes = {
 		[`main`]: true
@@ -65,6 +68,12 @@ const Main = (props) => {
       icon: <BsPlus />,
       func: () => addRef.current.togglePopup(),
       global: true
+    },
+    {
+      label: "Edit",
+      icon: <AiFillEdit />,
+      func: (props) => editRef.current.togglePopup(props),
+      global: false
     },
     {
       label: "Delete",
@@ -93,6 +102,7 @@ const Main = (props) => {
       </Row>
 
       <AddBillSection ref={addRef} setBills={setBills} />
+      <EditBillSection ref={editRef} setBills={setBills} bills={bills} />
     </Container>
   )
 }

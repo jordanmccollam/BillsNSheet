@@ -6,6 +6,7 @@ import { Card, Table } from '../../components'
 import { BsPlus } from "react-icons/bs";
 import AddBillSection from './AddBill';
 import TotalsInfoSection from "./TotalsInfo";
+import { MdDelete } from 'react-icons/md';
 
 import './_main.scss';
 
@@ -48,17 +49,28 @@ const Main = (props) => {
 
   const [bills, setBills] = useState(testData)
 
+  const deleteBill = (bill) => {
+    setBills(prevBills => prevBills.filter(b => b != bill))
+  }
+
   const tableColumns = [
     {label: "Description", property: "description"},
     {label: "Amount", property: "amount", size: 2},
     {label: "Date", property: "date", size: 2}
   ]
 
-  const tableMenuActions = [
+  const tableActions = [
     {
       label: "ADD A BILL",
       icon: <BsPlus />,
-      func: () => addRef.current.togglePopup()
+      func: () => addRef.current.togglePopup(),
+      global: true
+    },
+    {
+      label: "Delete",
+      icon: <MdDelete />,
+      func: deleteBill,
+      global: false
     }
   ]
 
@@ -74,7 +86,7 @@ const Main = (props) => {
       <Row className="mt-2">
         <Col xl={9} lg={8} md={7} xs={10} className="mt-3">
           {/* Table of bills will go here */}
-          <Table data={bills} columns={tableColumns} name="Bills" menuActions={tableMenuActions} />
+          <Table data={bills} columns={tableColumns} name="Bills" actions={tableActions} />
         </Col>
 
         <TotalsInfoSection bills={bills} />

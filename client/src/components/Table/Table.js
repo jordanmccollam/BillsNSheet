@@ -4,15 +4,23 @@ import classnames from "classnames"
 import { Row, Col, Container } from 'react-bootstrap';
 import Button from '../Button/Button';
 import { BsPlus } from 'react-icons/bs';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
 
 import './_table.scss';
 
 const logger = "Table:: ";
 
-const Table = ({ className, rowKey, data, columns, name, menuActions }) => {
+const Table = ({ className, rowKey, data, columns, name, actions }) => {
   let classes = {
 		[`table`]: true
 	};
+
+  const renderTooltip = (props) => (
+    <Tooltip className="table-action-tooltip" {...props}>
+      {props.label}
+    </Tooltip>
+  );
 
   return (
     <Container fluid className={`${className} ${classnames(classes)}`}>
@@ -21,7 +29,7 @@ const Table = ({ className, rowKey, data, columns, name, menuActions }) => {
         <Col className="d-flex align-items-center">
           <h5>{name}</h5>
         </Col>
-        {menuActions.map((action, actionIndex) => (
+        {actions.filter(a => a.global).map((action, actionIndex) => (
           <Col key={`table-menu-action-${actionIndex}`} className="text-end">
             <Button onClick={action.func} ><div>{action.label} {action.icon && action.icon}</div></Button>
           </Col>
@@ -41,6 +49,14 @@ const Table = ({ className, rowKey, data, columns, name, menuActions }) => {
               {column.label}
             </Col>
           ))}
+          {actions.some(a => !a.global) && (
+            <Col 
+              xs={2} 
+              className={"text-start table-header-text"}
+            >
+              Actions
+            </Col>
+          )}
         </Row>
 
         {data.length > 0 ? data.map((item, item_index) => (
@@ -54,6 +70,24 @@ const Table = ({ className, rowKey, data, columns, name, menuActions }) => {
                 {item[column.property]}
               </Col>
             ))}
+            {actions.some(a => !a.global) && (
+              <Col
+                xs={2}
+                className="text-start d-flex"
+              >
+                {actions.filter(a => !a.global).map((action, actionIndex) => (
+                  <OverlayTrigger 
+                    placement="top"
+                    overlay={(props) => renderTooltip({...props, label: action.label})}
+                    delay={{ show: 250, hide: 250 }}
+                    key={`table-item-${item[rowKey]}-action-${actionIndex}`}
+                    
+                  >
+                    <div className="table-item-action" onClick={() => action.func(item)} >{action.icon}</div>
+                  </OverlayTrigger>
+                ))}
+              </Col>
+            )}
           </Row>
         )) : (
           <Row>
@@ -75,7 +109,7 @@ Table.propTypes = {
   data: PropTypes.array,
   columns: PropTypes.array,
   name: PropTypes.string,
-  menuActions: PropTypes.array
+  actions: PropTypes.array
 }
 
 Table.defaultProps = {
@@ -84,11 +118,12 @@ Table.defaultProps = {
   data: [],
   columns: [{label: "Label here", property: "", size: ""}],
   name: "Table",
-  menuActions: [
+  actions: [
     {
       label: "Add",
       icon: <BsPlus />,
-      func: () => console.log("Add to table")
+      func: () => console.log("Add to table"),
+      global: true
     }
   ]
 }

@@ -10,7 +10,7 @@
 
         &:hover {
             background-color: $dark-1;
-            cursor: pointer;
+            // cursor: pointer;
         }
     }
     
@@ -42,5 +42,15 @@
         padding-bottom: $space-02;
         padding-left: $space-02;
         padding-right: $space-02;
+    }
+
+    &-item-action {
+        transition: .2s;
+        transform: scale(1.2);
+
+        &:hover {
+            transform: scale(1.6);
+            cursor: pointer;
+        }
     }
 }

@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cd client && npm start",
+    "start-client": "cd client && npm start",
+    "start": "node server",
+    "dev": "nodemon server",
     "install": "cd client && npm i",
     "storybook": "cd client && npm run storybook",
     "build": "cd client && npm run build"
@@ -21,6 +23,12 @@
   },
   "homepage": "https://github.com/jordanmccollam/BillsNSheet#readme",
   "devDependencies": {
-    "hygen": "^6.2.11"
+    "hygen": "^6.2.11",
+    "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2"
   }
 }

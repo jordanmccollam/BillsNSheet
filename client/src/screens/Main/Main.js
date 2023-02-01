@@ -51,7 +51,7 @@ const Main = (props) => {
 		[`main`]: true
 	};
 
-  const [bills, setBills] = useState(testData)
+  const [bills, setBills] = useState([])
 
   useEffect(() => {
     getBills()
@@ -59,7 +59,6 @@ const Main = (props) => {
 
   const getBills = () => {
     apis.getBills().then(res => {
-      console.log(res)
       setBills(res.data.output);
     }).catch(err => {
       console.error(logger + "error:: getBills:", err)
@@ -68,6 +67,7 @@ const Main = (props) => {
 
   const deleteBill = (bill) => {
     setBills(prevBills => prevBills.filter(b => b != bill))
+    apis.deleteBill(bill._id);
   }
 
   const tableColumns = [

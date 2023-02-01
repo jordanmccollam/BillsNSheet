@@ -3,6 +3,7 @@ import { Form } from 'react-bootstrap'
 import moment from 'moment';
 import * as Comp from '../../components'
 import { BiError } from "react-icons/bi";
+import apis from "../../api";
 
 const defaultNewBill = {
     showPopup: false,
@@ -31,7 +32,7 @@ const AddBillSection = forwardRef(({ setBills }, ref) => {
         }))
     }
 
-    const addNewBill = () => {
+    const addNewBill = async () => {
         var randID = Math.floor(Math.random() * 9999);
     
         var fullDate = new Date();
@@ -50,13 +51,20 @@ const AddBillSection = forwardRef(({ setBills }, ref) => {
           }))
           return;
         }
+
+        const newBillObj = {
+          ...newBill,
+          date: formattedDate
+        }
+
+        const res = await apis.createBill(newBillObj)
+        
     
         setBills(prevBills => [
           ...prevBills,
           {
-            _id: randID,
-            ...newBill,
-            date: formattedDate
+            _id: res.data.output._id,
+            ...newBillObj
           }
         ])
     

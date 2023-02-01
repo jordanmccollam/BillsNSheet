@@ -3,6 +3,7 @@ import { Form } from 'react-bootstrap'
 import moment from 'moment';
 import * as Comp from '../../components'
 import { BiError } from "react-icons/bi";
+import apis from "../../api";
 
 const defaultEmptyBill = {
     showPopup: false,
@@ -38,11 +39,14 @@ const EditBillSection = forwardRef(({ setBills, bills }, ref) => {
     const confirmEdit = () => {        
         var updatedBills = [...bills];
         var index = updatedBills.findIndex(bill => bill._id === currentBill._id)
-        updatedBills[index] = {
+        var billObj = {
             ...updatedBills[index],
             ...currentBill
         }
-        console.log(updatedBills)
+        updatedBills[index] = billObj;
+
+        apis.updateBill(billObj._id, billObj)
+
         setBills(updatedBills);
         togglePopup(null);
     }

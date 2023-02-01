@@ -26,11 +26,12 @@ const TotalsInfoSection = ({ bills }) => {
     }
   
     const calculateCurrentAmount = () => {
-      var billsBeforeToday = bills.filter(t => parseInt(t.date) < parseInt(moment().format("D")));
+      var billsBeforeToday = bills.filter(t => parseInt(t.date) <= (parseInt(moment().format("D"))));
       var _currentAmount = income;
       billsBeforeToday.forEach(item => {
         _currentAmount -= parseFloat(item.amount);
       });
+      console.log(_currentAmount)
       setCurrentAmount(_currentAmount)
     }
 

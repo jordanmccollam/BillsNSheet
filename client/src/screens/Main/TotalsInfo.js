@@ -11,8 +11,11 @@ const TotalsInfoSection = ({ bills }) => {
   
     useEffect(() => {
       calculateTotalBills()
-      calculateCurrentAmount()
     }, [bills])
+
+    useEffect(() => {
+        calculateCurrentAmount()
+    }, [totalBills, income])
   
     const calculateTotalBills = () => {
       var _totalBills = 0
@@ -23,7 +26,7 @@ const TotalsInfoSection = ({ bills }) => {
     }
   
     const calculateCurrentAmount = () => {
-      var billsBeforeToday = bills.filter(t => parseInt(t.date) < parseInt(moment().format("D")));
+      var billsBeforeToday = bills.filter(t => parseInt(t.date) < parseInt(moment('6/1/2023', 'D/M/YYYY').format("D")));
       var _currentAmount = income;
       billsBeforeToday.forEach(item => {
         _currentAmount -= parseFloat(item.amount);

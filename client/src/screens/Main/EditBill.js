@@ -35,9 +35,7 @@ const EditBillSection = forwardRef(({ setBills, bills }, ref) => {
         }))
     }
 
-    const confirmEdit = () => {
-        console.log("Confirmed edit")
-        
+    const confirmEdit = () => {        
         var updatedBills = [...bills];
         var index = updatedBills.findIndex(bill => bill._id === currentBill._id)
         updatedBills[index] = {

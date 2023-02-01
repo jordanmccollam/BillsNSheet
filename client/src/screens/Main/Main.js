@@ -8,7 +8,8 @@ import AddBillSection from './AddBill';
 import TotalsInfoSection from "./TotalsInfo";
 import EditBillSection from "./EditBill";
 import { MdDelete } from 'react-icons/md';
-import { AiFillEdit } from 'react-icons/ai'
+import { AiFillEdit } from 'react-icons/ai';
+import apis from "../../api";
 
 import './_main.scss';
 
@@ -51,6 +52,19 @@ const Main = (props) => {
 	};
 
   const [bills, setBills] = useState(testData)
+
+  useEffect(() => {
+    getBills()
+  }, [])
+
+  const getBills = () => {
+    apis.getBills().then(res => {
+      console.log(res)
+      setBills(res.data.output);
+    }).catch(err => {
+      console.error(logger + "error:: getBills:", err)
+    })
+  }
 
   const deleteBill = (bill) => {
     setBills(prevBills => prevBills.filter(b => b != bill))

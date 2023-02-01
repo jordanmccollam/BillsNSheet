@@ -118,14 +118,7 @@ Table.defaultProps = {
   data: [],
   columns: [{label: "Label here", property: "", size: ""}],
   name: "Table",
-  actions: [
-    {
-      label: "Add",
-      icon: <BsPlus />,
-      func: () => console.log("Add to table"),
-      global: true
-    }
-  ]
+  actions: []
 }
 
 export default Table;

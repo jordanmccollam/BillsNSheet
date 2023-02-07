@@ -6,17 +6,25 @@ const rest = process.env.REACT_APP_ENV === 'production' ? axios : axios.create({
     baseURL: 'http://localhost:8000'
 })
 
-export const getBills = () => rest.get(`/api/bills`).catch(err => console.error("request", err));
-export const createBill = (payload) => rest.post(`/api/bill`, payload).catch(err => console.error("request", err));
-export const deleteBill = (id) => rest.delete(`/api/bill/${id}`).catch(err => console.error("request", err));
-export const updateBill = (id, payload) => rest.put(`/api/bill/${id}`, payload).catch(err => console.error("request", err));
+
+export const getUser = (email) => rest.get(`/api/user/${email}`)
+export const getUsers = (email) => rest.get(`/api/users`)
+export const createUser = (payload) => rest.post(`/api/user`, payload)
+
+export const getBills = (id) => rest.get(`/api/bills/${id}`)
+export const createBill = (payload) => rest.post(`/api/bill`, payload)
+export const deleteBill = (id) => rest.delete(`/api/bill/${id}`)
+export const updateBill = (id, payload) => rest.put(`/api/bill/${id}`, payload)
 
 
 const apis = {
     getBills,
     createBill,
     deleteBill,
-    updateBill
+    updateBill,
+    getUser,
+    getUsers,
+    createUser
 }
 
 export default apis;

@@ -1,7 +1,8 @@
 const Bill = require('../models/bill-model');
+const User = require('../models/user-model');
 
 getBills = (req, res) => {
-    Bill.find({}, (err, bills) => {
+    Bill.find({ owner: req.params.id }, (err, bills) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }

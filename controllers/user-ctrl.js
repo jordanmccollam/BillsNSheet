@@ -1,11 +1,34 @@
 const User = require('../models/user-model');
 
-getUser = (req, res) => {
-    User.findOne({ email: req.params.email })
-    .populate('bills')
+getUsers = (req, res) => {
+    User.find({}, (err, users) => {
+        if (err) {
+            return res.status(400).json({ success: false, error: err })
+        }
+        if (!users.length) {
+            return res
+                .status(404)
+                .json({ success: false, error: `Error getting users` })
+        }
+        return res.status(200).json({ success: true, output: users })
+    })
+}
+
+getUser = async (req, res) => {
+    await User.findOne({ email: req.params.email })
+    .populate("bills")
     .exec((err, user) => {
-        if (err) return res.status(400).json({ success: false, error: err });
-        return res.status(200).json({ success: true, output: user })
+        var output_user = user;
+
+        if (err) {
+            return res.status(400).json({ success: false, error: err, message: "Something went wrong"})
+        }
+        if (!user) {
+            // USER NOT FOUND -> CREATE NEW USER
+            return res.status(200).json({ success: false, err: "User not found" })
+        }
+
+        return res.status(200).json({ success: true, output: output_user })
     })
 }
 
@@ -43,5 +66,6 @@ createUser = (req, res) => {
 
 module.exports = {
     getUser,
-    createUser
+    createUser,
+    getUsers
 }

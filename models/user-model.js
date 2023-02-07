@@ -3,8 +3,7 @@ const Schema = mongoose.Schema;
 
 const User = new Schema(
     {
-        email: { type: String, required: true },
-        password: { type: String, required: true },
+        email: { type: String, required: true , unique: true},
         income: { type: Number, required: true },
         bills: [{ type: Schema.Types.ObjectId, ref: 'bills' }]
     },

@@ -4,14 +4,18 @@ import calendar_icon from './calendar_icon.png';
 import moment from 'moment';
 import { Card } from '../../components'
 
-const TotalsInfoSection = ({ bills }) => {
-    const [income, setIncome] = useState(1900)
+const TotalsInfoSection = ({ bills, user }) => {
+    const [income, setIncome] = useState(user.income)
     const [totalBills, setTotalBills] = useState(0)
     const [currentAmount, setCurrentAmount] = useState(0)
   
     useEffect(() => {
       calculateTotalBills()
     }, [bills])
+
+    useEffect(() => {
+      setIncome(user.income)
+    }, [user?.income])
 
     useEffect(() => {
         calculateCurrentAmount()
@@ -31,7 +35,6 @@ const TotalsInfoSection = ({ bills }) => {
       billsBeforeToday.forEach(item => {
         _currentAmount -= parseFloat(item.amount);
       });
-      console.log(_currentAmount)
       setCurrentAmount(_currentAmount)
     }
 
@@ -72,6 +75,7 @@ const TotalsInfoSection = ({ bills }) => {
                             className="income-input" 
                             onBlur={saveIncome} 
                             onKeyDown={detectEnterKey}
+                            min={0}
                         />
                     </div>
                 </div>

@@ -12,7 +12,7 @@ const defaultNewBill = {
     date: 1
 }
 
-const AddBillSection = forwardRef(({ setBills }, ref) => {
+const AddBillSection = forwardRef(({ setBills, user }, ref) => {
     const [newBill, setNewBill] = useState(defaultNewBill)
 
     useImperativeHandle(ref, () => {
@@ -54,10 +54,12 @@ const AddBillSection = forwardRef(({ setBills }, ref) => {
 
         const newBillObj = {
           ...newBill,
-          date: formattedDate
+          date: formattedDate,
+          owner: user._id
         }
 
         const res = await apis.createBill(newBillObj)
+        console.log(res)
         
     
         setBills(prevBills => [

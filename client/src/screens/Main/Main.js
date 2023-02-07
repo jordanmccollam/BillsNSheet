@@ -60,7 +60,7 @@ const Main = ({ className, logout, user }) => {
   }, [])
 
   const getBills = () => {
-    apis.getBills().then(res => {
+    apis.getBills(user._id).then(res => {
       setBills(res.data.output);
     }).catch(err => {
       console.error(logger + "error:: getBills:", err)
@@ -107,7 +107,7 @@ const Main = ({ className, logout, user }) => {
           <Col className="center-v justify-content-end">
           <Dropdown>
             <Dropdown.Toggle className="user-dropdown">
-              Welcome, {user.name}
+              Welcome, {user.email}
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
@@ -124,7 +124,7 @@ const Main = ({ className, logout, user }) => {
           <Table data={bills} columns={tableColumns} name="Bills" actions={tableActions} />
         </Col>
 
-        <TotalsInfoSection bills={bills} />
+        <TotalsInfoSection bills={bills} user={user} />
       </Row>
 
       <AddBillSection ref={addRef} setBills={setBills} user={user} />

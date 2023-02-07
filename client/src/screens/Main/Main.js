@@ -10,6 +10,8 @@ import EditBillSection from "./EditBill";
 import { MdDelete } from 'react-icons/md';
 import { AiFillEdit } from 'react-icons/ai';
 import apis from "../../api";
+import Dropdown from 'react-bootstrap/Dropdown';
+
 
 import './_main.scss';
 
@@ -43,7 +45,7 @@ const defaultNewBill = {
   date: 1
 }
 
-const Main = (props) => {
+const Main = ({ className, logout, user }) => {
   const addRef = useRef()
   const editRef = useRef()
 
@@ -98,11 +100,21 @@ const Main = (props) => {
   ]
 
   return (
-    <Container className={`${props.className} ${classnames(classes)} my-3`}>
+    <Container className={`${className} ${classnames(classes)} my-3`}>
       <Card className="px-4">
         <Row>
           <Col><h1 >Bills N' Sheet</h1></Col>
-          <Col className="center-v justify-content-end">Welcome, User</Col>
+          <Col className="center-v justify-content-end">
+          <Dropdown>
+            <Dropdown.Toggle className="user-dropdown">
+              Welcome, {user.name}
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu>
+              <Dropdown.Item href="#" onClick={logout}>Logout</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+          </Col>
         </Row>
       </Card>
 
@@ -115,7 +127,7 @@ const Main = (props) => {
         <TotalsInfoSection bills={bills} />
       </Row>
 
-      <AddBillSection ref={addRef} setBills={setBills} />
+      <AddBillSection ref={addRef} setBills={setBills} user={user} />
       <EditBillSection ref={editRef} setBills={setBills} bills={bills} />
     </Container>
   )

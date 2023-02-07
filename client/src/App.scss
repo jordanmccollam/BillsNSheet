@@ -13,6 +13,26 @@
     h6 {
         color: $dark-1
     }
+
+    .loading-container {
+        justify-content: center;
+        height: 100vh;
+        align-items: center;
+
+        .title {
+            color: $dark-1;
+            text-align: center;
+            border-bottom: 1px solid $dark-1;
+        }
+
+        .loading-txt {
+            text-align: center;
+            font-size: $text-03;
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+    }
 }
 
 @import "./components/Card/card.scss";

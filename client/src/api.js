@@ -6,7 +6,6 @@ const rest = process.env.REACT_APP_ENV === 'production' ? axios : axios.create({
     baseURL: 'http://localhost:8000'
 })
 
-// TASKS
 export const getBills = () => rest.get(`/api/bills`).catch(err => console.error("request", err));
 export const createBill = (payload) => rest.post(`/api/bill`, payload).catch(err => console.error("request", err));
 export const deleteBill = (id) => rest.delete(`/api/bill/${id}`).catch(err => console.error("request", err));

@@ -85,4 +85,16 @@
     .total-bills-text {
         color: $danger;
     }
+
+    .user-dropdown {
+        background: transparent;
+        border: none;
+        outline: none;
+
+        &:focus {
+            background: transparent;
+            border: none;
+            outline: none;
+        }
+    }
 }

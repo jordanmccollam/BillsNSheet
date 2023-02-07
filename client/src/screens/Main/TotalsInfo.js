@@ -3,6 +3,7 @@ import { Col, Form } from 'react-bootstrap'
 import calendar_icon from './calendar_icon.png';
 import moment from 'moment';
 import { Card } from '../../components'
+import apis from "../../api";
 
 const TotalsInfoSection = ({ bills, user }) => {
     const [income, setIncome] = useState(user.income)
@@ -44,7 +45,7 @@ const TotalsInfoSection = ({ bills, user }) => {
 
     const saveIncome = () => {
         // Save income to db / user profile here
-        console.log("Save income")
+        apis.updateUser(user._id, {income})
     }
 
     const detectEnterKey = (e) => {

@@ -10,6 +10,7 @@ const rest = process.env.REACT_APP_ENV === 'production' ? axios : axios.create({
 export const getUser = (email) => rest.get(`/api/user/${email}`)
 export const getUsers = (email) => rest.get(`/api/users`)
 export const createUser = (payload) => rest.post(`/api/user`, payload)
+export const updateUser = (id, payload) => rest.put(`/api/user/${id}`, payload)
 
 export const getBills = (id) => rest.get(`/api/bills/${id}`)
 export const createBill = (payload) => rest.post(`/api/bill`, payload)
@@ -24,7 +25,8 @@ const apis = {
     updateBill,
     getUser,
     getUsers,
-    createUser
+    createUser,
+    updateUser
 }
 
 export default apis;

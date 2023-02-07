@@ -64,8 +64,47 @@ createUser = (req, res) => {
     })
 }
 
+updateUser = (req, res) => {
+    const body = req.body
+
+    if (!body) {
+        return res.status(400).json({
+            success: false,
+            error: 'You must provide a body to update',
+        })
+    }
+
+    User.findOne({ _id: req.params.id }, (err, user) => {
+        if (err) {
+            return res.status(404).json({
+                err,
+                message: 'User not found!',
+            })
+        }
+
+        // CONTENT TO UPDATE
+        user.income = body.income;
+
+        user.save()
+            .then(() => {
+                return res.status(200).json({
+                    success: true,
+                    output: user,
+                    message: 'User updated!',
+                })
+            })
+            .catch(err => {
+                return res.status(404).json({
+                    success: false,
+                    message: ("User not UPDATED due to error: ", err)
+                })
+            })
+    })
+}
+
 module.exports = {
     getUser,
     createUser,
-    getUsers
+    getUsers,
+    updateUser
 }

@@ -9,6 +9,7 @@ router.post('/user', UserCtrl.createUser);
 router.get('/user/:email', UserCtrl.getUser);
 router.get('/users', UserCtrl.getUsers)
 router.post('/user', UserCtrl.createUser);
+router.put('/user/:id', UserCtrl.updateUser);
 
 router.post('/bill', BillCtrl.createBill);
 router.put('/bill/:id', BillCtrl.updateBill);

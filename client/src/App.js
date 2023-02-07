@@ -12,7 +12,8 @@ function App() {
       <Container fluid>
         <Row>
           <Col>
-            <Screens.Main />
+            {/* <Screens.Main /> */}
+            <Screens.Authentication />
           </Col>
         </Row>
       </Container>

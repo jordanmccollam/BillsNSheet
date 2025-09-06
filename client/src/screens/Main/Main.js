@@ -111,8 +111,8 @@ const Main = ({ className, logout, user }) => {
               Welcome, {user.email}
             </Dropdown.Toggle>
 
-            <Dropdown.Menu>
-              <Dropdown.Item href="#" onClick={logout}>Logout</Dropdown.Item>
+            <Dropdown.Menu align="end">
+              <Dropdown.Item href="#" className="text-center" onClick={logout}>Logout</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
           </Col>

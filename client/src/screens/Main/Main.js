@@ -104,7 +104,7 @@ const Main = ({ className, logout, user }) => {
     <Container className={`${className} ${classnames(classes)} my-3`}>
       <Card className="px-4">
         <Row>
-          <Col><h1 >Bills N' Sheet</h1></Col>
+          <Col><h1 >Bills n' Sheet</h1></Col>
           <Col className="center-v justify-content-end">
           <Dropdown>
             <Dropdown.Toggle className="user-dropdown">

@@ -10,3 +10,6 @@ A Budget Planner Application
 - Classnames
 - SASS
 - Moment.js
+
+
+- Jordan McCollam

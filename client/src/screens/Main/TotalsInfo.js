@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Col, Form } from 'react-bootstrap'
+import { Col, Form, Row } from 'react-bootstrap'
 import calendar_icon from './calendar_icon.png';
 import moment from 'moment';
 import { Card } from '../../components'
 import apis from "../../api";
+
+import './_calendar.scss';
 
 const TotalsInfoSection = ({ bills, user }) => {
     const [income, setIncome] = useState(user.income)
@@ -56,55 +58,60 @@ const TotalsInfoSection = ({ bills, user }) => {
     }
 
     return (
-        <Col className="d-flex justify-content-center">
-          <div>
-            <div className="calendar-icon">
-              <img alt="calendar_icon" src={calendar_icon} className="calendar-icon-img" />
-              <h2 className="calendar-icon-month">{moment().format("MMMM").toUpperCase()}</h2>
-              <div className="calendar-icon-day">{moment().format("DD")}</div>
-            </div>
+      <Row>
 
+
+        <Col>
+          <Card className="mt-3 text-center totals-card">
             <div>
-              <Card className="mt-3 text-center">
-                <div>
-                    <h6 >TOTAL INCOME:</h6>
-                    <div className="d-flex justify-content-center income-container">
-                        <Form.Control 
-                            type="text" 
-                            value={income} 
-                            onChange={onChangeIncome} 
-                            className="income-input" 
-                            onBlur={saveIncome} 
-                            onKeyDown={detectEnterKey}
-                            min={0}
-                        />
-                    </div>
-                </div>
-              </Card>
-
-              <Card className="mt-3 text-center">
-                  <div>
-                    <h6>TOTAL BILLS:</h6>
-                    <h1 className="total-bills-text">- {totalBills}</h1>
-                  </div>
-              </Card>
-
-              <Card className="mt-3 text-center">
-                  <div>
-                    <h6 className="mt-1">LEFT OVER:</h6>
-                    <h1>${income - totalBills}</h1>
-                  </div>
-              </Card>
-
-              <Card className="mt-3 text-center">
-                  <div>
-                    <h6 className="mt-1">CURRENTLY:</h6>
-                    <h3>${currentAmount}</h3>
-                  </div>
-              </Card>
+              <h6 >TOTAL INCOME:</h6>
+              <div className="d-flex justify-content-center income-container">
+                  <Form.Control 
+                      type="number" 
+                      value={income} 
+                      onChange={onChangeIncome} 
+                      className="income-input" 
+                      onBlur={saveIncome} 
+                      onKeyDown={detectEnterKey}
+                      min={0}
+                  />
+              </div>
             </div>
+          </Card>
+        </Col>
+
+
+        <Col>
+          <Card className="mt-3 text-center totals-card">
+            <div>
+              <h6 className="mb-3" >TOTAL BILLS:</h6>
+              <h1 className="total-bills-text">- {totalBills}</h1>
+            </div>
+          </Card>
+        </Col>
+
+
+        <Col>
+          <Card className="mt-3 text-center totals-card">
+            <div>
+              <h6 className="mb-3" >REMAINING:</h6>
+              <h1 className={income - totalBills < 0 ? 'total-bills-text' : 'income-text'}>{income - totalBills}</h1>
+            </div>
+          </Card>
+        </Col>
+
+
+        <Col md={3} lg={2} className="d-none d-md-block" >
+          <div className="mt-3 text-center totals-card">
+            <time dateTime={moment().format('YYYY-MM-DD')} className="calendar-icon">
+              <span className="month">{moment().format('MMMM')}</span>
+              <span className="day">{moment().format('DD')}</span>
+            </time>
           </div>
         </Col>
+
+
+      </Row>
     )
 }
 

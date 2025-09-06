@@ -6,6 +6,7 @@ import { Card, Table } from '../../components'
 import { BsPlus } from "react-icons/bs";
 import AddBillSection from './AddBill';
 import TotalsInfoSection from "./TotalsInfo";
+import SideInfoSection from "./SideInfo";
 import EditBillSection from "./EditBill";
 import { MdDelete } from 'react-icons/md';
 import { AiFillEdit } from 'react-icons/ai';
@@ -118,13 +119,17 @@ const Main = ({ className, logout, user }) => {
         </Row>
       </Card>
 
+
+      <TotalsInfoSection bills={bills} user={user} />
+
+
       <Row className="mt-2">
-        <Col xl={9} lg={8} md={7} xs={10} className="mt-3">
+        <Col md={9} lg={10} className="mt-3">
           {/* Table of bills will go here */}
           <Table data={bills} columns={tableColumns} name="Bills" actions={tableActions} />
         </Col>
 
-        <TotalsInfoSection bills={bills} user={user} />
+        <SideInfoSection bills={bills} user={user} />
       </Row>
 
       <AddBillSection ref={addRef} setBills={setBills} user={user} />

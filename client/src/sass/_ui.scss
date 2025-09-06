@@ -23,3 +23,11 @@
     color: $dark-2 !important;
 }
 
+
+// Hides arrows on number inputs
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+

@@ -1,0 +1,45 @@
+@import "../../sass/variables";
+
+// Variables for customization
+$calendar-bg: #fff;
+$calendar-border-color: #bdbdbd;
+$header-bg: $danger;
+$header-color: #fff;
+$day-color: #333;
+
+
+.calendar-icon {
+  font-size: $text-02; /* Adjust icon size */
+  display: block;
+  position: relative;
+  background-color: $calendar-bg;
+  border-radius: $border-radius;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+
+  .month {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: $header-bg;
+    color: $header-color;
+    font-style: normal;
+    text-align: center;
+    padding: 0.5em 0;
+    font-size: 0.8em;
+    text-transform: uppercase;
+  }
+
+  .day {
+    position: absolute;
+    bottom: 0.1em;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: bold;
+    color: $dark-2;
+  }
+}
